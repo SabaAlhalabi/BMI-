@@ -1,4 +1,43 @@
 <resources>
     <string name="app_name">BMI</string>
-    <string name="username">saba_alhalbi</string>
+    <string name="splash_next">Next</string>
+    <string name="activities_header">BMI Analyzer</string>
+
+    <!--Login activity-->
+    <string name="login_tv1">Welcome Back</string>
+    <string name="login_tv2">If you already have an account, log in</string>
+    <string name="login_et_username">Username</string>
+    <string name="login_et_password">Password</string>
+    <string name="login_btn_login">Log In</string>
+    <string name="login_tv3">You Don\'t  have an account? </string>
+    <string name="login_tv4_signUp">Sign Up</string>
+
+    <!--Signup activity-->
+    <string name="signup_tv1">Ctreate New Account</string>
+    <string name="signup_tv2">If you don\'t already have an account</string>
+    <string name="signup_et_name">Name</string>
+    <string name="signup_et_email">E-Mail</string>
+    <string name="signup_et_password">Password</string>
+    <string name="signup_et_RePassword">Re-Password</string>
+    <string name="signup_btn_create">Create</string>
+    <string name="signup_tv3">You have an account?</string>
+    <string name="signup_tv4">Login</string>
+
+    <!--Home activity-->
+    <string name="home_tv2_status">Current Status</string>
+    <string name="home_et_status">Normal (Still Good)</string>
+    <string name="home_et_oldStatus">Old Status</string>
+    <string name="home_btn_addFood">Add Food</string>
+    <string name="home_et_addRecord">Add Record</string>
+    <string name="home_et_viewFood">View Food</string>
+    <string name="home_tv3_logout">Logout</string>
+
+    <!--Complete Signup activity-->
+    <string name="completeSignUp_tv1">Complete Your Information</string>
+    <string name="completeSignUp_tv_gender">Gender</string>
+    <string name="completeSignUp_rb_male">Male</string>
+    <string name="completeSignUp_rb_female">Female</string>
+    <string name="completeSignUp_tv_weight">Weight</string>
+
+
 </resources>

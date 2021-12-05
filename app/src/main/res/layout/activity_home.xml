@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="BMI Analyzer"
+        android:text="@string/activities_header"
         android:textSize="25dp"
         android:textStyle="bold"
         android:textColor="@color/white"
@@ -20,6 +20,7 @@
         android:layout_marginBottom="20dp"/>
 
     <TextView
+        android:id="@+id/home_tv1_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hi, Mohammed"
@@ -27,9 +28,10 @@
         android:textSize="35sp"/>
 
     <TextView
+        android:id="@+id/home_tv2_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Current Status"
+        android:text="@string/home_tv2_status"
         android:layout_marginTop="20dp"
         android:textSize="20sp"
         android:textColor="@color/blue"
@@ -37,18 +39,21 @@
         android:layout_marginStart="20dp"/>
 
     <EditText
+        android:id="@+id/home_et_status"
         android:layout_width="match_parent"
         android:layout_height="44dp"
+        android:inputType="text"
         android:layout_margin="20dp"
         android:layout_marginTop="0dp"
         android:background="@drawable/complete_btn_shape"
-        android:hint="Normal (Still Good)"
+        android:hint="@string/home_et_status"
         android:textAlignment="center"/>
 
     <TextView
+        android:id="@+id/home_et_oldStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Old Status"
+        android:text="@string/home_et_oldStatus"
         android:layout_marginTop="20dp"
         android:textSize="20sp"
         android:textColor="@color/blue"
@@ -56,6 +61,7 @@
         android:layout_marginStart="20dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/home_rv_oldStatus"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_gravity="center"
@@ -70,16 +76,18 @@
         android:gravity="center">
 
         <Button
+            android:id="@+id/home_btn_addFood"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Add Food"
+            android:text="@string/home_btn_addFood"
             android:textAllCaps="false"
             android:backgroundTint="@color/blue"
             android:layout_marginRight="5dp"
             android:textStyle="bold"/>
 
         <Button
+            android:id="@+id/home_btn_addRecord"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -92,24 +100,25 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/home_btn_viewFood"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:text="Add Record"
+        android:text="View Food"
         android:textAllCaps="false"
         android:backgroundTint="@color/blue"
         android:layout_marginLeft="5dp"
         android:textStyle="bold"/>
 
     <TextView
+        android:id="@+id/home_tv3_logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Logout"
         android:textColor="@color/black"
         android:layout_gravity="center"
         android:layout_marginTop="50dp"/>
-
 
 
 </LinearLayout>

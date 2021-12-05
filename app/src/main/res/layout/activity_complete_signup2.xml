@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CompleteSignup"
+    tools:context=".CompleteSignup2"
     android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="BMI Analyzer"
+        android:text="@string/activities_header"
         android:textSize="25dp"
         android:textStyle="bold"
         android:textColor="@color/white"
@@ -20,9 +20,10 @@
         android:layout_marginBottom="20dp"/>
 
     <TextView
+        android:id="@+id/completeSignUp_tv1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Complete Your Information"
+        android:text="@string/completeSignUp_tv1"
         android:textColor="@color/blue"
         android:textSize="35sp"
         android:textStyle="bold"
@@ -31,147 +32,144 @@
         android:textAlignment="center"
         android:lineHeight="50sp"/>
 
-    <LinearLayout
+    <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:layout_marginStart="2dp">
+        android:columnCount="5"
+        android:rowCount="4"
+        android:padding="25dp"
+        android:layout_marginTop="20dp">
 
         <TextView
+            android:id="@+id/completeSignUp_tv_gender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Gender"
+            android:text="@string/completeSignUp_tv_gender"
             android:textSize="25sp"
-            android:layout_gravity="center"
+            android:layout_gravity="left"
             android:textColor="@color/blue"
-            android:textStyle="bold"/>
-
+            android:textStyle="bold"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"/>
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginStart="30dp">
+            android:layout_marginStart="30dp"
+            android:layout_columnSpan="4">
 
             <RadioButton
+                android:id="@+id/completeSignUp_rb_male"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Male"
+                android:text="@string/completeSignUp_rb_male"
                 android:textSize="18sp"
                 android:textColor="@color/blue"
-                android:layout_marginRight="20dp"/>
+                android:layout_columnSpan="2"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"/>
 
             <RadioButton
+                android:id="@+id/completeSignUp_rb_female"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Female"
+                android:text="@string/completeSignUp_rb_female"
                 android:textSize="18sp"
-                android:textColor="@color/blue"/>
-
+                android:textColor="@color/blue"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"/>
         </RadioGroup>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="2dp"
-        android:gravity="center">
-
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Weight"
-            android:textSize="25sp"
-            android:layout_gravity="center"
-            android:textColor="@color/blue"
-            android:textStyle="bold"
-            android:layout_marginEnd="5dp"/>
+        android:id="@+id/completeSignUp_tv_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/completeSignUp_tv_weight"
+        android:textSize="25sp"
+        android:layout_gravity="left"
+        android:textColor="@color/blue"
+        android:textStyle="bold"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@drawable/complete_btn_shape"
             android:drawableStart="@drawable/ic_baseline_add"
-            android:layout_marginStart="30dp"/>
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"/>
 
         <EditText
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:background="@drawable/complete_btn_shape"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@drawable/complete_btn_shape"
-            android:drawableStart="@drawable/ic_baseline_minimize"/>
+            android:drawableStart="@drawable/ic_baseline_minimize"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Kg"
+            android:layout_gravity="center"
             android:layout_marginStart="10dp"
-            android:textColor="@color/blue"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="2dp"
-        android:gravity="center">
+            android:textColor="@color/blue"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Length"
             android:textSize="25sp"
-            android:layout_gravity="center"
+            android:layout_gravity="left"
             android:textColor="@color/blue"
             android:textStyle="bold"
-            android:layout_marginEnd="5dp"/>
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@drawable/complete_btn_shape"
             android:drawableStart="@drawable/ic_baseline_add"
-            android:layout_marginStart="30dp"/>
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"/>
 
         <EditText
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:background="@drawable/complete_btn_shape"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@drawable/complete_btn_shape"
-            android:drawableStart="@drawable/ic_baseline_minimize"/>
+            android:drawableStart="@drawable/ic_baseline_minimize"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="cm"
+            android:layout_gravity="center"
             android:layout_marginStart="10dp"
-            android:textColor="@color/blue"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="2dp"
-        android:gravity="center">
+            android:textColor="@color/blue"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -181,23 +179,20 @@
             android:layout_gravity="center"
             android:textColor="@color/blue"
             android:textStyle="bold"
-            android:layout_marginEnd="0dp"/>
+            android:layout_marginEnd="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"/>
 
 
         <EditText
-            android:layout_width="150dp"
+            android:layout_width="50dp"
             android:layout_height="match_parent"
             android:background="@drawable/complete_btn_shape"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            android:layout_columnSpan="3"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1" />
 
-    </LinearLayout>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Save Data"
-        android:textAllCaps="false"
-        android:layout_margin="50dp"
-        android:backgroundTint="@color/blue"/>
+    </GridLayout>
 
 </LinearLayout>
