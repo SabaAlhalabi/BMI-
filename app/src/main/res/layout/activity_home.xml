@@ -41,7 +41,7 @@
     <EditText
         android:id="@+id/home_et_status"
         android:layout_width="match_parent"
-        android:layout_height="44dp"
+        android:layout_height="55dp"
         android:inputType="text"
         android:layout_margin="20dp"
         android:layout_marginTop="0dp"
@@ -81,21 +81,25 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/home_btn_addFood"
+            android:textSize="20sp"
             android:textAllCaps="false"
             android:backgroundTint="@color/blue"
             android:layout_marginRight="5dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:padding="10dp"/>
 
         <Button
             android:id="@+id/home_btn_addRecord"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Add Record"
+            android:text="@string/home_btn_addRecord"
+            android:textSize="20sp"
             android:textAllCaps="false"
             android:backgroundTint="@color/blue"
             android:layout_marginLeft="5dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:padding="10dp"/>
 
     </LinearLayout>
 
@@ -105,7 +109,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:text="View Food"
+        android:text="@string/home_btn_viewFood"
+        android:textSize="20sp"
+        android:padding="10dp"
         android:textAllCaps="false"
         android:backgroundTint="@color/blue"
         android:layout_marginLeft="5dp"
@@ -115,10 +121,18 @@
         android:id="@+id/home_tv3_logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Logout"
-        android:textColor="@color/black"
         android:layout_gravity="center"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="50dp"
+        android:text="@string/home_tv3_logout"
+        android:textSize="20sp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:layout_width="62dp"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        android:layout_gravity="center"
+        android:layout_marginTop="-5dp"/>
 
 
 </LinearLayout>

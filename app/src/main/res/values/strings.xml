@@ -25,19 +25,24 @@
 
     <!--Home activity-->
     <string name="home_tv2_status">Current Status</string>
-    <string name="home_et_status">Normal (Still Good)</string>
+    <string name="home_et_status">Healthy Weight (Still Good)</string>
     <string name="home_et_oldStatus">Old Status</string>
     <string name="home_btn_addFood">Add Food</string>
-    <string name="home_et_addRecord">Add Record</string>
-    <string name="home_et_viewFood">View Food</string>
+    <string name="home_btn_addRecord">Add Record</string>
+    <string name="home_btn_viewFood">View Food</string>
     <string name="home_tv3_logout">Logout</string>
 
-    <!--Complete Signup activity-->
+    <!--Complete Signup2 activity-->
     <string name="completeSignUp_tv1">Complete Your Information</string>
     <string name="completeSignUp_tv_gender">Gender</string>
     <string name="completeSignUp_rb_male">Male</string>
     <string name="completeSignUp_rb_female">Female</string>
     <string name="completeSignUp_tv_weight">Weight</string>
+    <string name="completeSignUp_tv_length">Length</string>
+    <string name="completeSignUp_tv_dob">Date Of Birth</string>
+    <string name="completeSignUp_tv_kg">kg</string>
+    <string name="completeSignUp_tv_cm">cm</string>
+    <string name="completeSignUp_btn_save">Save Data</string>
 
 
 </resources>
