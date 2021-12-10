@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">BMI</string>
-    <string name="splash_next">Next</string>
     <string name="activities_header">BMI Analyzer</string>
+
+    <!--Splash activity-->
+    <string name="splash_next">Next</string>
 
     <!--Login activity-->
     <string name="login_tv1">Welcome Back</string>
@@ -21,16 +23,7 @@
     <string name="signup_et_RePassword">Re-Password</string>
     <string name="signup_btn_create">Create</string>
     <string name="signup_tv3">You have an account?</string>
-    <string name="signup_tv4">Login</string>
-
-    <!--Home activity-->
-    <string name="home_tv2_status">Current Status</string>
-    <string name="home_et_status">Healthy Weight (Still Good)</string>
-    <string name="home_et_oldStatus">Old Status</string>
-    <string name="home_btn_addFood">Add Food</string>
-    <string name="home_btn_addRecord">Add Record</string>
-    <string name="home_btn_viewFood">View Food</string>
-    <string name="home_tv3_logout">Logout</string>
+    <string name="signup_tv4_login">Login</string>
 
     <!--Complete Signup2 activity-->
     <string name="completeSignUp_tv1">Complete Your Information</string>
@@ -43,6 +36,15 @@
     <string name="completeSignUp_tv_kg">kg</string>
     <string name="completeSignUp_tv_cm">cm</string>
     <string name="completeSignUp_btn_save">Save Data</string>
+
+    <!--Home activity-->
+    <string name="home_tv2_status">Current Status</string>
+    <string name="home_et_status">Healthy Weight (Still Good)</string>
+    <string name="home_et_oldStatus">Old Status</string>
+    <string name="home_btn_addFood">Add Food</string>
+    <string name="home_btn_addRecord">Add Record</string>
+    <string name="home_btn_viewFood">View Food</string>
+    <string name="home_tv3_logout">Logout</string>
 
 
 </resources>

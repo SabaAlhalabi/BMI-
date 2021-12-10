@@ -122,10 +122,10 @@
             android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/login_tv4_signup"
+            android:id="@+id/signup_tv4_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/signup_tv4"
+            android:text="@string/signup_tv4_login"
             android:textColor="@color/blue"
             android:typeface="serif"/>
 
