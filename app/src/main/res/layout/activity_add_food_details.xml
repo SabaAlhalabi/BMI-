@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddFoodDetails"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/activities_header"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:background="@color/blue"
+        android:padding="10dp"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        android:id="@+id/addFoodDetails_tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addFoodDetails_tv1"
+        android:textColor="@color/blue"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:textAlignment="center"/>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="25dp"
+        android:layout_marginTop="20dp"
+        android:columnCount="3"
+        android:rowCount="3">
+
+        <TextView
+            android:id="@+id/addFoodDetails_tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/addFoodDetails_tv_name"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="23sp"
+            android:textColor="@color/blue"
+            android:textStyle="bold"
+            android:layout_marginBottom="15dp"/>
+
+        <EditText
+            android:id="@+id/addFoodDetails_et_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/complete_btn_shape"
+            android:inputType="text"
+            android:autofillHints=""
+            android:layout_columnSpan="2"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_marginBottom="15dp"/>
+
+        <TextView
+            android:id="@+id/addFoodDetails_tv_category"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/addFoodDetails_tv_category"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="23sp"
+            android:textColor="@color/blue"
+            android:textStyle="bold"
+            android:layout_marginBottom="15dp"/>
+
+        <Spinner
+            android:id="@+id/addFoodDetails_sp_category"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/complete_btn_shape"
+            android:spinnerMode="dropdown"
+            android:layout_columnSpan="2"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_marginBottom="15dp"/>
+
+        <TextView
+            android:id="@+id/addFoodDetails_tv_calory"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/addFoodDetails_tv_calory"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="23sp"
+            android:layout_gravity="left"
+            android:textColor="@color/blue"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/addFoodDetails_et_calory"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/complete_btn_shape"
+            android:inputType="numberDecimal"
+            android:autofillHints=""
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"/>
+
+        <TextView
+            android:id="@+id/addFoodDetails_tv_calUnit"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/addFoodDetails_tv_calUnit"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="23sp"
+            android:layout_gravity="right"
+            android:textColor="@color/blue"
+            android:textStyle="bold"/>
+
+    </GridLayout>
+
+    <TextView
+        android:id="@+id/addFoodDetails_tv_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addFoodDetails_tv_photo"
+        android:textSize="23sp"
+        android:textColor="@color/blue"
+        android:textStyle="bold"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"/>
+
+    <ImageView
+        android:id="@+id/addFoodDetails_img_food"
+        android:layout_width="350dp"
+        android:layout_height="300dp"
+        android:layout_marginLeft="25dp"
+        android:src="@drawable/food" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_gravity="center">
+
+    <Button
+        android:id="@+id/addFoodDetails_btn_upload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addFoodDetails_btn_upload"
+        android:backgroundTint="@color/blue"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:padding="10dp"/>
+
+    <Button
+        android:id="@+id/addFoodDetails_btn_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addFoodDetails_btn_save"
+        android:backgroundTint="@color/blue"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:padding="10dp"
+        android:layout_marginLeft="50dp"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

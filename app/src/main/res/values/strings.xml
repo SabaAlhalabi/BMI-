@@ -46,5 +46,40 @@
     <string name="home_btn_viewFood">View Food</string>
     <string name="home_tv3_logout">Logout</string>
 
+    <!-- Add Record activity-->
+    <string name="addRecord_tv1">New Record</string>
+    <string name="addRecord_tv_weight">Weight</string>
+    <string name="addRecord_tv_length">Length</string>
+    <string name="addRecord_tv_kg">kg</string>
+    <string name="addRecord_tv_cm">cm</string>
+    <string name="addRecord_tv_date">Date</string>
+    <string name="addRecord_tv_time">Time</string>
+    <string name="addRecord_btn_save">Save Data</string>
+
+    <!-- Add Food Details activity-->
+    <string name="addFoodDetails_tv1">Add Food Details</string>
+    <string name="addFoodDetails_tv_name">Name</string>
+    <string name="addFoodDetails_tv_category">Category</string>
+    <string name="addFoodDetails_tv_calory">Calory</string>
+    <string name="addFoodDetails_tv_calUnit">Cal/g</string>
+    <string name="addFoodDetails_tv_photo">Photo</string>
+    <string name="addFoodDetails_btn_upload">Upload Photo</string>
+    <string name="addFoodDetails_btn_save">Save</string>
+
+    <!-- Edit Food Details activity-->
+    <string name="EditFoodDetails_tv1">Add Food Details</string>
+    <string name="EditFoodDetails_tv_name">Name</string>
+    <string name="EditFoodDetails_tv_category">Category</string>
+    <string name="EditFoodDetails_tv_calory">Calory</string>
+    <string name="EditFoodDetails_tv_calUnit">Cal/g</string>
+    <string name="EditFoodDetails_tv_photo">Photo</string>
+    <string name="EditFoodDetails_btn_upload">Upload Photo</string>
+    <string name="EditFoodDetails_btn_save">Save</string>
+
+    <!-- Food List activity -->
+    <string name="foodList_tv1">Food List</string>
+
+    <!-- Food List Items Shape activity -->
+    <string name="foodItems_btn_edit">Edit</string>
 
 </resources>

@@ -9,18 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BMI">
-        <activity android:name=".CompleteSignup2"></activity>
-        <activity android:name=".Home" />
-        <activity android:name=".CompleteSignup" />
-        <activity android:name=".Signup" />
-        <activity android:name=".Login"/>
-        <activity android:name=".Splash">
+        <activity android:name=".FoodList"></activity>
+        <activity android:name=".EditFoodDetails" />
+        <activity android:name=".AddFoodDetails">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".AddRecord" />
+        <activity android:name=".CompleteSignup2" />
+        <activity android:name=".Home" />
+        <activity android:name=".Signup" />
+        <activity android:name=".Login" />
+        <activity android:name=".Splash" />
     </application>
 
 </manifest>
