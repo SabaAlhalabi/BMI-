@@ -45,7 +45,7 @@
         android:inputType="text"
         android:layout_margin="20dp"
         android:layout_marginTop="0dp"
-        android:background="@drawable/complete_btn_shape"
+        android:background="@drawable/blue_border_shape"
         android:hint="@string/home_et_status"
         android:textAlignment="center"/>
 

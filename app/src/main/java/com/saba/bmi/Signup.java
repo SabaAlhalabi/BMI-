@@ -8,12 +8,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Signup extends AppCompatActivity {
     EditText et_name,et_email,et_password,et_rePassword;
     TextView tv_login;
     Button btn_create;
     String name,email,password,rePassword;
+    boolean isValidPassword,isValidEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,16 +33,33 @@ public class Signup extends AppCompatActivity {
         tv_login=findViewById(R.id.signup_tv4_login);
         btn_create=findViewById(R.id.signup_btn_create);
 
-        name=et_name.getText().toString();
-        email=et_email.getText().toString();
-        password=et_password.getText().toString();
-        rePassword=et_rePassword.getText().toString();
 
         btn_create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getBaseContext(),CompleteSignup2.class);
-                startActivity(i);
+
+                name=et_name.getText().toString();
+                email=et_email.getText().toString();
+                password=et_password.getText().toString();
+                rePassword=et_rePassword.getText().toString();
+
+                // check if all fields filled
+                if(name.isEmpty() || email.isEmpty() || password.isEmpty() || rePassword.isEmpty())
+                    Toast.makeText(getBaseContext(),"please Fill All Fields",Toast.LENGTH_SHORT).show();
+                // email validation
+                else if(!(isValidEmail=emailValidation(email)))
+                Toast.makeText(getBaseContext(),"Email is not Valid",Toast.LENGTH_SHORT).show();
+                else{
+                    // Two passwords matches
+                    isValidPassword=confirmPassword(password,rePassword);
+                    if(!isValidPassword){
+                        Toast.makeText(getBaseContext(),"The Entered Passwords Doesn't Match, Try Again!",Toast.LENGTH_SHORT).show();
+                    }else{
+                        //open Complete SignUp layout
+                        Intent completeSignUpIntent= new Intent(Signup.this,CompleteSignup2.class);
+                        startActivity(completeSignUpIntent);
+                    }
+                }
             }
         });
 
@@ -48,5 +70,18 @@ public class Signup extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+
+    public boolean confirmPassword(String password,String rePassword){
+        if(password.equals(rePassword)){
+            return true;
+        }
+        else return false;
+    }
+
+    public boolean emailValidation(String email){
+        Pattern p = Pattern.compile("\\b[A-Z0-9._%-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b");
+        Matcher m = p.matcher(email);
+        return m.find();
     }
 }

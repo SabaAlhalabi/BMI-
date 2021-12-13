@@ -19,17 +19,21 @@ public class Splash extends AppCompatActivity {
         tv_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(getBaseContext(),Login.class);
-                startActivity(i);
+                openLogin();
             }
         });
 
        new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {
-                Intent i=new Intent(getBaseContext(),Login.class);
-                startActivity(i);
+                openLogin();
             }
         },5000);
     }
+
+    public void openLogin(){
+        Intent i=new Intent(getBaseContext(),Login.class);
+        startActivity(i);
+    }
+
 }

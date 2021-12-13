@@ -9,12 +9,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Login extends AppCompatActivity {
-    EditText et_username,et_password;
-    Button btn_login;
-    TextView tv_signUp;
-    String username,password;
+    private EditText et_username,et_password;
+    private Button btn_login;
+    private TextView tv_signUp;
+    private boolean isValid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,28 +27,40 @@ public class Login extends AppCompatActivity {
         btn_login=findViewById(R.id.login_btn_login);
         tv_signUp=findViewById(R.id.login_tv4_signUp);
 
-        username=et_username.getText().toString();
-        password=et_password.getText().toString();
-
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i =new Intent(Login.this,Home.class);
-                startActivity(i);
+                String username=et_username.getText().toString();
+                String password=et_password.getText().toString();
+                if(username.isEmpty() || password.isEmpty()){
+                    Toast.makeText(getBaseContext(),"please Fill the Required Fields!",Toast.LENGTH_SHORT).show();
+                }else{
+                    isValid=validate(username,password);
+                    if (isValid){
+                        Intent homeIntent =new Intent(Login.this,Home.class);
+                        startActivity(homeIntent);
+                    }else{
+                        Toast.makeText(getBaseContext(),"Invalid Data, Try Again!",Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
 
         tv_signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i =new Intent(Login.this,Signup.class);
-                startActivity(i);
+                Intent signUpIntent =new Intent(Login.this,Signup.class);
+                startActivity(signUpIntent);
             }
 
         });
     }
 
-
+    public boolean validate(String username,String password){
+        if(username.equals("admin") && password.equals("admin")){
+            return true;
+        }else return false;
+    }
 
 }
