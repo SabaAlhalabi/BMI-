@@ -13,16 +13,18 @@
         <activity android:name=".EditFoodDetails" />
         <activity android:name=".AddFoodDetails"></activity>
         <activity android:name=".AddRecord" />
-        <activity android:name=".CompleteSignup2" />
-        <activity android:name=".Home" />
-        <activity android:name=".Signup" />
-        <activity android:name=".Login" />
-        <activity android:name=".Splash">
+        <activity android:name=".CompleteSignup2" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".Home" />
+        <activity android:name=".Signup" />
+        <activity android:name=".Login" />
+        <activity android:name=".Splash">
+
         </activity>
     </application>
 

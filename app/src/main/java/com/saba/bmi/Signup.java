@@ -45,7 +45,7 @@ public class Signup extends AppCompatActivity {
 
                 // check if all fields filled
                 if(name.isEmpty() || email.isEmpty() || password.isEmpty() || rePassword.isEmpty())
-                    Toast.makeText(getBaseContext(),"please Fill All Fields",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(),"please fill all fields",Toast.LENGTH_SHORT).show();
                 // email validation
                 else if(!(isValidEmail=emailValidation(email)))
                 Toast.makeText(getBaseContext(),"Email is not Valid",Toast.LENGTH_SHORT).show();
@@ -80,7 +80,7 @@ public class Signup extends AppCompatActivity {
     }
 
     public boolean emailValidation(String email){
-        Pattern p = Pattern.compile("\\b[A-Z0-9._%-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b");
+        Pattern p = Pattern.compile("^(.+)@(.+)$");
         Matcher m = p.matcher(email);
         return m.find();
     }
