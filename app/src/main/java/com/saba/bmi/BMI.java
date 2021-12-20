@@ -23,6 +23,11 @@ public class BMI {
         return bmi;
     }
 
+    public void calculateStatus(){
+        setStatus("Normal");
+    }
+
+
     public Double getWeight() {
         return weight;
     }

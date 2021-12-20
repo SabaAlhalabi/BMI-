@@ -13,7 +13,7 @@
         <activity android:name=".EditFoodDetails" />
         <activity android:name=".AddFoodDetails"></activity>
         <activity android:name=".AddRecord" />
-        <activity android:name=".CompleteSignup2" >
+        <activity android:name=".CompleteSignUp2" >
 
         </activity>
         <activity android:name=".Home" />

@@ -56,7 +56,7 @@ public class Signup extends AppCompatActivity {
                         Toast.makeText(getBaseContext(),"The Entered Passwords Doesn't Match, Try Again!",Toast.LENGTH_SHORT).show();
                     }else{
                         //open Complete SignUp layout
-                        Intent completeSignUpIntent= new Intent(Signup.this,CompleteSignup2.class);
+                        Intent completeSignUpIntent= new Intent(Signup.this, CompleteSignUp2.class);
                         completeSignUpIntent.putExtra("name",name);
                         completeSignUpIntent.putExtra("email",email);
                         completeSignUpIntent.putExtra("password",password);

@@ -20,15 +20,17 @@
         android:layout_marginBottom="20dp"/>
 
     <TextView
-        android:id="@+id/home_tv1_username"
-        android:layout_width="wrap_content"
+        android:id="@+id/home_tv1_name"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hi, Mohammed"
         android:layout_gravity="center"
-        android:textSize="35sp"/>
+        android:textSize="35sp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:gravity="center"/>
 
     <TextView
-        android:id="@+id/home_tv2_status"
+        android:id="@+id/home_tv2_currentStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/home_tv2_status"
@@ -38,16 +40,14 @@
         android:textStyle="bold"
         android:layout_marginStart="20dp"/>
 
-    <EditText
-        android:id="@+id/home_et_status"
+    <TextView
+        android:id="@+id/home_tv_status"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:inputType="text"
         android:layout_margin="20dp"
         android:layout_marginTop="0dp"
         android:background="@drawable/blue_border_shape"
-        android:hint="@string/home_et_status"
-        android:textAlignment="center"/>
+        android:gravity="center" />
 
     <TextView
         android:id="@+id/home_et_oldStatus"

@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,14 +12,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
-public class CompleteSignup2 extends AppCompatActivity {
+public class CompleteSignUp2 extends AppCompatActivity {
     private RadioGroup rg_gender;
     private TextView tv_increment_weight,tv_decrement_weight;
     private TextView tv_increment_length,tv_decrement_length;
@@ -36,7 +28,7 @@ public class CompleteSignup2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_complete_signup2);
+        setContentView(R.layout.activity_complete_signup);
 
         //inflate
         rg_gender = findViewById(R.id.completeSignUp_rg_gender);

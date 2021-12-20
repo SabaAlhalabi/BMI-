@@ -39,7 +39,7 @@
 
     <!--Home activity-->
     <string name="home_tv2_status">Current Status</string>
-    <string name="home_et_status">Healthy Weight (Still Good)</string>
+    <string name="home_tv_status">Healthy Weight (Still Good)</string>
     <string name="home_et_oldStatus">Old Status</string>
     <string name="home_btn_addFood">Add Food</string>
     <string name="home_btn_addRecord">Add Record</string>
