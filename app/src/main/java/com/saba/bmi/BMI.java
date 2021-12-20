@@ -1,7 +1,11 @@
 package com.saba.bmi;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 public class BMI {
-    private Double weight,length;
+    private double weight,length;
     private User user;
     private String status;
 
@@ -10,6 +14,13 @@ public class BMI {
         this.length = length;
         this.user = user;
         this.status = status;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public Double calculateBMI(double weight, double length, User user){
+        int age=user.calculateAge(user.getBirthday());
+        Double bmi= ((weight/Math.pow(length,2))*age*100)/100;
+        return bmi;
     }
 
     public Double getWeight() {

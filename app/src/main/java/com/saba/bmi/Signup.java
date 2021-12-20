@@ -14,11 +14,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Signup extends AppCompatActivity {
-    EditText et_name,et_email,et_password,et_rePassword;
-    TextView tv_login;
-    Button btn_create;
-    String name,email,password,rePassword;
-    boolean isValidPassword,isValidEmail;
+    private EditText et_name,et_email,et_password,et_rePassword;
+    private TextView tv_login;
+    private Button btn_create;
+    private String name,email,password,rePassword;
+    private boolean isValidPassword,isValidEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +57,9 @@ public class Signup extends AppCompatActivity {
                     }else{
                         //open Complete SignUp layout
                         Intent completeSignUpIntent= new Intent(Signup.this,CompleteSignup2.class);
+                        completeSignUpIntent.putExtra("name",name);
+                        completeSignUpIntent.putExtra("email",email);
+                        completeSignUpIntent.putExtra("password",password);
                         startActivity(completeSignUpIntent);
                     }
                 }
@@ -84,4 +87,5 @@ public class Signup extends AppCompatActivity {
         Matcher m = p.matcher(email);
         return m.find();
     }
+
 }
