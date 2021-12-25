@@ -18,7 +18,7 @@ public class Signup extends AppCompatActivity {
     private TextView tv_login;
     private Button btn_create;
     private String name,email,password,rePassword;
-    private boolean isValidPassword,isValidEmail;
+    private boolean isValidPassword,isValidEmail;0000000
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
