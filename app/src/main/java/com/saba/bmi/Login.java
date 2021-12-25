@@ -39,6 +39,7 @@ public class Login extends AppCompatActivity {
                     isValid=validate(username,password);
                     if (isValid){
                         Intent homeIntent =new Intent(Login.this,Home.class);
+                        homeIntent.putExtra("name",username);
                         startActivity(homeIntent);
                     }else{
                         Toast.makeText(getBaseContext(),"Invalid Data, Try Again!",Toast.LENGTH_SHORT).show();

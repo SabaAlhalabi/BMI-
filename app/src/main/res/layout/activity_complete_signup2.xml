@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CompleteSignUp2"
+    tools:context=".CompleteSignup2"
     android:orientation="vertical"
     tools:ignore="MissingDefaultResource">
 
@@ -106,7 +106,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginBottom="15dp"
             android:background="@drawable/blue_border_shape"
-            android:drawableStart="@drawable/ic_baseline_add"
+            android:drawableStart="@drawable/ic_baseline_add_24"
             android:clickable="true"
             android:focusable="true"/>
 
@@ -134,7 +134,7 @@
             android:layout_columnWeight="1"
             android:layout_marginBottom="15dp"
             android:background="@drawable/blue_border_shape"
-            android:drawableStart="@drawable/ic_baseline_minimize"
+            android:drawableStart="@drawable/ic_baseline_minimize_24"
             android:clickable="true"
             android:focusable="true"/>
 
@@ -174,7 +174,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginBottom="15dp"
             android:background="@drawable/blue_border_shape"
-            android:drawableStart="@drawable/ic_baseline_add"
+            android:drawableStart="@drawable/ic_baseline_add_24"
             android:clickable="true"
             android:focusable="true"/>
 
@@ -201,7 +201,7 @@
             android:layout_columnWeight="1"
             android:layout_marginBottom="15dp"
             android:background="@drawable/blue_border_shape"
-            android:drawableStart="@drawable/ic_baseline_minimize"
+            android:drawableStart="@drawable/ic_baseline_minimize_24"
             android:clickable="true"
             android:focusable="true"/>
 

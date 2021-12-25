@@ -2,13 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_gravity="center">
+        android:gravity="center">
 
         <TextView
             android:id="@+id/status_custom_item_tv_date"
@@ -21,7 +23,7 @@
             android:textSize="20sp"/>
 
         <TextView
-            android:id="@+id/status_custom_item_tv_kg"
+            android:id="@+id/status_custom_item_tv_weight"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:background="@drawable/status_shape"
@@ -36,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_gravity="center">
+        android:gravity="center">
 
         <TextView
             android:id="@+id/status_custom_item_tv_status"
@@ -49,7 +51,7 @@
             android:textSize="20sp"/>
 
         <TextView
-            android:id="@+id/status_custom_item_tv_cm"
+            android:id="@+id/status_custom_item_tv_length"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:background="@drawable/status_shape"
