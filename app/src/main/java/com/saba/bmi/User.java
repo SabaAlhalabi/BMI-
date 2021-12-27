@@ -4,6 +4,8 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
@@ -14,6 +16,7 @@ public class User implements Serializable {
     private ArrayList<BMI> bmis;
     private int age;
     private float agePercent;
+    FirebaseAuth mAuth;
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -204,5 +207,13 @@ public class User implements Serializable {
 
     public void setAgePercent(float agePercent) {
         this.agePercent = agePercent;
+    }
+
+    public FirebaseAuth getmAuth() {
+        return mAuth;
+    }
+
+    public void setmAuth(FirebaseAuth mAuth) {
+        this.mAuth = mAuth;
     }
 }
