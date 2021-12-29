@@ -1,5 +1,6 @@
 package com.saba.bmi;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,9 +15,15 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class CompleteSignup2 extends AppCompatActivity {
     private RadioGroup rg_gender;
@@ -30,6 +37,7 @@ public class CompleteSignup2 extends AppCompatActivity {
     private String name,email,password;
     private User signed_user;
     private ArrayList<BMI> bmis;
+    private FirebaseAuth mAuth;
 
 
     @Override
@@ -48,18 +56,16 @@ public class CompleteSignup2 extends AppCompatActivity {
         et_birthday = findViewById(R.id.completeSignUp_et_birthday);
         btn_save = findViewById(R.id.completeSignUp_btn_save);
 
-        //get data from previous activity
+        //get data from CompleteSignUp activity
         Intent intent = getIntent();
-        name = intent.getStringExtra("name");
-        email = intent.getStringExtra("email");
-        password = intent.getStringExtra("password");
+        String userID = intent.getStringExtra("userID");
 
 
         // + & - Buttons
         tv_increment_weight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(et_weight.getText().toString()==null)
+                if(et_weight.getText().toString().isEmpty())
                     weight=0;
                 weight=Float.parseFloat(et_weight.getText().toString());
                 weight= (float) (weight+1);
@@ -119,18 +125,36 @@ public class CompleteSignup2 extends AppCompatActivity {
                 if(gender.equals("null") || birthday.isEmpty() || et_weight.getText().toString().isEmpty() || et_length.getText().toString().isEmpty() )
                     Toast.makeText(getBaseContext(),"please fill all fields",Toast.LENGTH_SHORT).show();
                 else{
-                    //create new user
-                    LocalDate localDate= java.time.LocalDate.now();
-                    LocalTime localTime= java.time.LocalTime.now();
+
+                    String localDate= java.time.LocalDate.now().toString();
+                    String localTime= java.time.LocalTime.now().toString();
                     BMI first_bmi=new BMI(weight,length,localDate,localTime);
                     bmis=new ArrayList<BMI>();
                     bmis.add(first_bmi);
-                    signed_user=new User(name,email,password,gender,birthday,bmis);
 
-                    //home intent
-                    Intent home_intent=new Intent(getBaseContext(),Home.class);
-                    home_intent.putExtra("signed_user", signed_user);
-                    startActivity(home_intent);
+                    HashMap<String,Object> userDetails = new HashMap<>();
+                    userDetails.put("gender",gender);
+                    userDetails.put("birthday",birthday);
+                    userDetails.put("bmi",bmis);
+
+                    FirebaseDatabase.getInstance().getReference("Users")
+                            .child(userID)
+                            .updateChildren(userDetails)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(getBaseContext(),"Details Added Successfully",Toast.LENGTH_SHORT).show();
+
+                                //home intent
+                                Intent home_intent=new Intent(getBaseContext(),Home.class);
+                                startActivity(home_intent);
+                            }else{
+                                Toast.makeText(getBaseContext(),"Error"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+
                 }
             }
         });

@@ -15,7 +15,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -25,6 +29,7 @@ public class Signup extends AppCompatActivity {
     private Button btn_create;
     private String name,email,password,rePassword;
     private boolean isValidPassword,isValidEmail;
+    private FirebaseAuth  mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,7 @@ public class Signup extends AppCompatActivity {
         et_rePassword=findViewById(R.id.signup_et_RePassword);
         tv_login=findViewById(R.id.signup_tv4_login);
         btn_create=findViewById(R.id.signup_btn_create);
+        mAuth=FirebaseAuth.getInstance();
 
 
         btn_create.setOnClickListener(new View.OnClickListener() {
@@ -74,11 +80,40 @@ public class Signup extends AppCompatActivity {
                     return;
                 }
 
-               Intent completeSignupIntent = new Intent(getBaseContext(),CompleteSignup2.class);
-                completeSignupIntent.putExtra("name",name);
-                completeSignupIntent.putExtra("email",email);
-                completeSignupIntent.putExtra("password",password);
-                startActivity(completeSignupIntent);
+
+                mAuth.createUserWithEmailAndPassword(email,password)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if(task.isSuccessful()){
+                                    HashMap<String,Object> user = new HashMap<String, Object>();
+                                    user.put("name",name);
+                                    user.put("email",email);
+                                    user.put("password",password);
+
+
+                                    FirebaseDatabase.getInstance().getReference("Users")
+                                            .child(mAuth.getCurrentUser().getUid()).setValue(user)
+                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if (task.isSuccessful()){
+                                                        Toast.makeText(getBaseContext(),"User Registers Successfully",Toast.LENGTH_SHORT).show();
+                                                        Intent completeSignupIntent = new Intent(getBaseContext(),CompleteSignup2.class);
+                                                        completeSignupIntent.putExtra("userID",mAuth.getCurrentUser().getUid());;
+                                                        startActivity(completeSignupIntent);
+                                                    }else{
+                                                        Toast.makeText(getBaseContext(),"Registration Failed, Try again!",Toast.LENGTH_SHORT).show();
+                                                        System.out.println(task.getException().getMessage());
+                                                    }
+                                                }
+                                            });
+                                }else{
+                                    Toast.makeText(getBaseContext(),"Registration Failed, Try again!"+ task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                                    System.out.println(task.getException().getMessage());
+                                }
+                            }
+                        });
 
             }
         });

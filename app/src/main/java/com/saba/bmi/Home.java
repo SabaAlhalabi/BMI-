@@ -1,5 +1,6 @@
 package com.saba.bmi;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,6 +12,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -25,7 +35,8 @@ public class Home extends AppCompatActivity {
     Button btn_addFood,btn_addRecord,btn_viewFood;
     User signed_user;
     ArrayList<BMI> bmi_record;
-    OldStatusAdapter adapter;
+    //OldStatusAdapter adapter;
+    FirebaseAuth mAuth;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -41,41 +52,27 @@ public class Home extends AppCompatActivity {
         btn_addRecord=findViewById(R.id.home_btn_addRecord);
         btn_viewFood=findViewById(R.id.home_btn_viewFood);
         tv_name=findViewById(R.id.home_tv1_name);
-
-        //get data from complete signUp2 activity
-        Intent intent= getIntent();
-        signed_user= (User) intent.getSerializableExtra("signed_user");
-
-        String name=signed_user.getName();
-        BMI user_bmi=signed_user.getBmis().get(0);
-        Float weight=user_bmi.getWeight();
-        Float length=user_bmi.getLength();
-        String status=user_bmi.getStatus();
-        LocalDate localDate= user_bmi.getDate();
-        LocalTime localTime= user_bmi.getTime();
-
-
-        //welcome message
-        tv_name.setText("Hi, "+name);
-
-        //status Message
-        String changeMessage = signed_user.BMIChange();
-        tv_status.setText(status+"("+ changeMessage + ")");
+        mAuth=FirebaseAuth.getInstance();
 
 
 
 
-        //adding items to recycler view
-        bmi_record=new ArrayList<BMI>();
-        bmi_record.add(user_bmi);
 
+        //Getting user data from firebase
+        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("users")
+                .child(mAuth.getCurrentUser().getUid());
+        databaseRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-        adapter=new OldStatusAdapter(bmi_record);
-        RecyclerView.LayoutManager adapterManager = new LinearLayoutManager(getBaseContext());
+            }
 
-        rv_old_status.setHasFixedSize(true);
-        rv_old_status.setLayoutManager(adapterManager);
-        rv_old_status.setAdapter(adapter);
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
 
         //Add Food button
@@ -92,11 +89,9 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent addRecordIntent = new Intent(Home.this,AddRecord.class);
-                addRecordIntent.putExtra("signed_user", signed_user);
                 startActivity(addRecordIntent);
             }
         });
-
 
         //View Food button
         btn_viewFood.setOnClickListener(new View.OnClickListener() {
@@ -111,7 +106,9 @@ public class Home extends AppCompatActivity {
         tv_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent logoutIntent = new Intent(Home.this,Login.class);
+                FirebaseAuth.getInstance().signOut();
+                Intent logoutIntent = new Intent(Home.this,Login.class)
+                        .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(logoutIntent);
             }
         });

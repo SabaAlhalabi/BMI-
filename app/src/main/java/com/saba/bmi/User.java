@@ -216,4 +216,8 @@ public class User implements Serializable {
     public void setmAuth(FirebaseAuth mAuth) {
         this.mAuth = mAuth;
     }
+
+    public void setBmis(ArrayList<BMI> bmis) {
+        this.bmis = bmis;
+    }
 }

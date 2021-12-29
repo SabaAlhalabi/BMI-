@@ -96,8 +96,8 @@ public class AddRecord extends AppCompatActivity {
             public void onClick(View view) {
                 float weight=Float.parseFloat(et_weight.getText().toString());
                 float length=Float.parseFloat(et_length.getText().toString());
-                LocalDate date= LocalDate.parse(et_date.getText().toString());
-                LocalTime time= LocalTime.parse(et_time.getText().toString());
+                String date= et_date.getText().toString();
+                String time= et_time.getText().toString();
 
                 BMI new_bmi = new BMI(weight,length,date,time);
                 signed_user.setBmis(new_bmi);

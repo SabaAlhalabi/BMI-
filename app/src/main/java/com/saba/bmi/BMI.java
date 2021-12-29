@@ -11,13 +11,11 @@ import java.time.LocalTime;
 
 public class BMI implements Serializable {
     private float weight,length,bmi_value;
-    private String status;
-    private LocalDate date;
-    private LocalTime time;
+    private String status,date,time;
     private User user;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public BMI(float weight, float length, LocalDate date, LocalTime time) {
+    public BMI(float weight, float length, String date, String time) {
         this.weight = weight;
         this.length = length;
         this.date=date;
@@ -60,19 +58,19 @@ public class BMI implements Serializable {
         this.length = length;
     }
 
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public LocalTime getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(LocalTime time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
@@ -90,5 +88,13 @@ public class BMI implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
