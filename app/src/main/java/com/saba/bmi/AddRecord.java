@@ -1,5 +1,6 @@
 package com.saba.bmi;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,9 +11,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.HashMap;
 
 public class AddRecord extends AppCompatActivity {
     private TextView tv_increment_weight,tv_decrement_weight;
@@ -20,7 +28,9 @@ public class AddRecord extends AppCompatActivity {
     private EditText et_weight,et_length,et_date,et_time;
     private Button btn_save;
     private float weight,length;
-    private User signed_user;
+    private FirebaseAuth mAuth;
+    private FirebaseDatabase firebaseDatabase;
+    private String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +45,10 @@ public class AddRecord extends AppCompatActivity {
         et_weight = findViewById(R.id.addRecord_et_weight);
         et_length = findViewById(R.id.addRecord_et_length);
         btn_save = findViewById(R.id.addRecord_btn_save);
+        mAuth = FirebaseAuth.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+
+        userId=mAuth.getCurrentUser().getUid();
 
         // + & - Buttons
         tv_increment_weight.setOnClickListener(new View.OnClickListener() {
@@ -85,9 +99,7 @@ public class AddRecord extends AppCompatActivity {
             }
         });
 
-        //get data from home Intent
-        Intent intent=getIntent();
-        signed_user= (User) intent.getSerializableExtra("user");
+
 
         //Save Record Button
         btn_save.setOnClickListener(new View.OnClickListener() {
@@ -99,11 +111,25 @@ public class AddRecord extends AppCompatActivity {
                 String date= et_date.getText().toString();
                 String time= et_time.getText().toString();
 
-                BMI new_bmi = new BMI(weight,length,date,time);
-                signed_user.setBmis(new_bmi);
+                HashMap<String,Object> userRecords = new HashMap<>();
+                userRecords.put("weight",weight);
+                userRecords.put("length",length);
+                userRecords.put("date",date);
+                userRecords.put("time",time);
 
-                Intent homeIntent = new Intent(getBaseContext(),Home.class);
-                startActivity(homeIntent);
+                FirebaseDatabase.getInstance().getReference("Records").child(userId)
+                        .setValue(userRecords).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            Toast.makeText(getBaseContext(),"Record Added",Toast.LENGTH_LONG);
+                            Intent homeIntent = new Intent(getBaseContext(),Home.class);
+                            startActivity(homeIntent);
+                        }else
+                            Toast.makeText(getBaseContext(),"Failed"+task.getException().getMessage(),Toast.LENGTH_LONG);
+                    }
+                });
+
             }
         });
 

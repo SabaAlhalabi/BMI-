@@ -9,9 +9,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -29,13 +31,15 @@ import java.time.temporal.Temporal;
 import java.util.ArrayList;
 import java.util.Date;
 
+import static android.content.ContentValues.TAG;
+
 public class Home extends AppCompatActivity {
     TextView tv_status,tv_logout,tv_name;
     RecyclerView rv_old_status;
     Button btn_addFood,btn_addRecord,btn_viewFood;
-    User signed_user;
+    String name,password,gender,email,birthday,weight,length,date,time;
     ArrayList<BMI> bmi_record;
-    //OldStatusAdapter adapter;
+    OldStatusAdapter adapter;
     FirebaseAuth mAuth;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -54,25 +58,52 @@ public class Home extends AppCompatActivity {
         tv_name=findViewById(R.id.home_tv1_name);
         mAuth=FirebaseAuth.getInstance();
 
-
+        adapter = new OldStatusAdapter(bmi_record);
+        rv_old_status.setAdapter(adapter);
+        rv_old_status.setHasFixedSize(true);
 
 
 
         //Getting user data from firebase
-        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("users")
+        DatabaseReference userDatabaseRef = FirebaseDatabase.getInstance().getReference("Users")
                 .child(mAuth.getCurrentUser().getUid());
-        databaseRef.addValueEventListener(new ValueEventListener() {
+        userDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                 name = (String) snapshot.child("name").getValue();
+                 password = (String) snapshot.child("password").getValue();
+                 email = (String) snapshot.child("email").getValue();
+                 birthday = (String) snapshot.child("birthday").getValue();
+                 gender = (String) snapshot.child("gender").getValue();
 
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Log.w(TAG, "loadUserData:onCancelled", error.toException());
             }
         });
 
+        //Getting Record data from firebase
+        DatabaseReference recordDatabaseRef = FirebaseDatabase.getInstance().getReference("Records")
+                .child(mAuth.getCurrentUser().getUid());
+        recordDatabaseRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot a: snapshot.getChildren()){
+                    ArrayList<String> records = new ArrayList<>();
+                    records.add((String) snapshot.getValue().toString());
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.w(TAG, "loadRecordData:onCancelled", error.toException());
+            }
+        });
 
 
         //Add Food button
@@ -114,4 +145,16 @@ public class Home extends AppCompatActivity {
         });
 
     }
+
+    //View Details
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void viewUserDetails(){
+        tv_name.setText(name);
+
+        BMI bmi_record = new BMI(Float.parseFloat(weight),Float.parseFloat(length)
+                ,date,time);
+
+        tv_status.setText(bmi_record.getStatus());
+    }
+
 }

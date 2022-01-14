@@ -77,8 +77,8 @@
             android:textStyle="bold"
             android:layout_marginBottom="15dp"/>
 
-        <Spinner
-            android:id="@+id/addFoodDetails_sp_category"
+        <EditText
+            android:id="@+id/addFoodDetails_et_category"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@drawable/blue_border_shape"
@@ -143,7 +143,7 @@
         android:layout_width="350dp"
         android:layout_height="300dp"
         android:layout_marginLeft="25dp"
-        android:src="@drawable/food" />
+        android:src="" />
 
     <LinearLayout
         android:layout_width="wrap_content"

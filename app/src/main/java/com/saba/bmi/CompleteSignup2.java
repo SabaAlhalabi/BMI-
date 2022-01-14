@@ -34,8 +34,6 @@ public class CompleteSignup2 extends AppCompatActivity {
 
     private float weight,length;
     private String gender,birthday;
-    private String name,email,password;
-    private User signed_user;
     private ArrayList<BMI> bmis;
     private FirebaseAuth mAuth;
 
@@ -126,16 +124,14 @@ public class CompleteSignup2 extends AppCompatActivity {
                     Toast.makeText(getBaseContext(),"please fill all fields",Toast.LENGTH_SHORT).show();
                 else{
 
-                    String localDate= java.time.LocalDate.now().toString();
-                    String localTime= java.time.LocalTime.now().toString();
-                    BMI first_bmi=new BMI(weight,length,localDate,localTime);
-                    bmis=new ArrayList<BMI>();
-                    bmis.add(first_bmi);
+
 
                     HashMap<String,Object> userDetails = new HashMap<>();
                     userDetails.put("gender",gender);
                     userDetails.put("birthday",birthday);
-                    userDetails.put("bmi",bmis);
+                    userDetails.put("length",et_length.getText().toString());
+                    userDetails.put("weight",et_weight.getText().toString());
+
 
                     FirebaseDatabase.getInstance().getReference("Users")
                             .child(userID)
@@ -145,6 +141,23 @@ public class CompleteSignup2 extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
                                 Toast.makeText(getBaseContext(),"Details Added Successfully",Toast.LENGTH_SHORT).show();
+
+                                HashMap<String,Object> userRecords = new HashMap<>();
+                                userRecords.put("weight",et_weight.getText().toString());
+                                userRecords.put("length",et_length.getText().toString());
+                                userRecords.put("date",java.time.LocalDate.now().toString());
+                                userRecords.put("time",java.time.LocalTime.now().toString());
+
+                                FirebaseDatabase.getInstance().getReference("Records").child(userID)
+                                        .setValue(userRecords).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()){
+                                            Toast.makeText(getBaseContext(),"Record Added",Toast.LENGTH_LONG);
+                                        }else
+                                            Toast.makeText(getBaseContext(),"Failed"+task.getException().getMessage(),Toast.LENGTH_LONG);
+                                    }
+                                });
 
                                 //home intent
                                 Intent home_intent=new Intent(getBaseContext(),Home.class);

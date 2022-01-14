@@ -1,4 +1,4 @@
-/*package com.saba.bmi;
+package com.saba.bmi;
 
 import android.os.Build;
 import android.view.LayoutInflater;
@@ -59,4 +59,3 @@ public class OldStatusAdapter extends RecyclerView.Adapter<OldStatusAdapter.OldS
         }
     }
 }
-*/

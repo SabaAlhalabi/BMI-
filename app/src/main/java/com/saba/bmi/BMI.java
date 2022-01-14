@@ -21,7 +21,7 @@ public class BMI implements Serializable {
         this.date=date;
         this.time=time;
 
-        calculateStatus(this);
+        calculateStatus();
 
     }
 
@@ -29,16 +29,16 @@ public class BMI implements Serializable {
 
     //calculate BMI status
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void calculateStatus(BMI bmi){
-        if(bmi.getBmi_value()<18.5)
-            bmi.setStatus("Underweight");
-        else if(bmi.getBmi_value()>=18.5 && bmi.getBmi_value()<25.00)
-            bmi.setStatus("Healthy Weight");
-        else if(bmi.getBmi_value()>=25.00 && bmi.getBmi_value()<30.00)
-            bmi.setStatus("overweight");
-        else if(bmi.getBmi_value()>30.00)
-            bmi.setStatus("Obesity");
-        else bmi.setStatus("UnKnown");
+    public void calculateStatus(){
+        if(getBmi_value()<18.5)
+            setStatus("Underweight");
+        else if(getBmi_value()>=18.5 && getBmi_value()<25.00)
+            setStatus("Healthy Weight");
+        else if(getBmi_value()>=25.00 && getBmi_value()<30.00)
+            setStatus("overweight");
+        else if(getBmi_value()>30.00)
+            setStatus("Obesity");
+        else setStatus("UnKnown");
     }
 
 
